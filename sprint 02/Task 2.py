@@ -1,18 +1,15 @@
-MORSE_NUMBERS_DICT = {'0': '-----', '1': '.----', '2': '..---', '3': '...--',
-                      '4': '....-', '5': '.....', '6': '-....',
-                      '7': '--...', '8': '---..', '9': '----.',
-                      }
-
-
 def morse_number(numbers):
     result = ''
-    for number in numbers:
-        if number != ' ':
-            result += MORSE_NUMBERS_DICT[number] + ' '
-        else:
-            result += ' '
+    morse = '-----'
+    for i in numbers:
+        if 0<= int(i) <=5:
+            morse = '-----'
+            morse = morse.replace('-' * int(i), '.' * int(i), 1)
+        elif 6<= int(i) <= 9:
+            morse = '.....'
+            morse = morse.replace('.' * (int(i)-5) , '-' * (int(i)-5), 1)
+        result += ' ' + morse
+    return result.strip()
 
-    return result
-
-
-print(morse_number('005'))
+print(morse_number("513"))
+print(morse_number("005"))
