@@ -1,5 +1,6 @@
 class Pizza():
     order_num = 0
+# Краще order_num робити закритим (_order_num)
 
     def __init__(self, ingredients):
         Pizza.order_num += 1
@@ -21,6 +22,9 @@ class Pizza():
         ingredients = ["beef", "meatball", "bacon"]
         return cls(ingredients)
 
+# Правильніше буде
+#    def meat_festival(cls):
+#       return cls(["beef", "meatball", "bacon"])
 
 p2 = Pizza.meat_festival()
 print(p2.ingredients)
