@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import cmath
 
 def solve_quadric_equation(a, b, c):
@@ -20,3 +21,6 @@ def solve_quadric_equation(a, b, c):
 print(solve_quadric_equation(1, 5, 6))
 print(solve_quadric_equation(0, 8, 1))
 print(solve_quadric_equation(1, "abc", 5))
+=======
+
+>>>>>>> a026fe8745ca8f59783a2a778f8328373f981ab3
