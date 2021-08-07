@@ -17,7 +17,6 @@ def check_positive(number):
     except ValueError:
         return "Error type: ValueError!"
 # enter your code
-
 print(check_positive (24) )
 print(check_positive (-21.0) )
 print(check_positive ('cd') )
