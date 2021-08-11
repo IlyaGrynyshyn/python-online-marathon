@@ -18,11 +18,17 @@ def find(file, key):
                             result.extend(value)
                         if value not in result and not isinstance(value, list):
                             result.append(value)
+        else:
+            if key in data.keys():
+                if type(data[key]) is not list and data[key] not in result:
+                    result.append(data[key])
+                else:
+                    for item in data[key]:
+                        if item not in result:
+                            result.append(item)
         return result
 
 
 print((find('1.json', 'password')))
 print((find('2.json', 'password')))
 print((find('3.json', 'password')))
-
-
