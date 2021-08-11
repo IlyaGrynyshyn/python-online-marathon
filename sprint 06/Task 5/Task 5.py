@@ -33,6 +33,6 @@ def serialize(object, filename, fileType):
             json.dump(object, f)
 
 
-serialize("Anton", "Anton", FileType.JSON)
+serialize("text", "File", FileType.JSON)
 user = {"name": "Anton", "id": 123141}
 serialize(user, "user.json", FileType.JSON)
