@@ -45,12 +45,12 @@ def user_with_department(csv_file, user_json, department_json):
             headers = {"name": None, "department": None}
             writer = csv.writer(csv_result, delimiter=",")
             writer.writerow(headers.keys())
-            for each in user_data:
+            for item in user_data:
 
-                validate_json(each, schema_user, "user")
+                validate_json(item, schema_user, "user")
 
-                headers["name"] = each["name"]
-                dep_id = each["department_id"]
+                headers["name"] = item["name"]
+                dep_id = item["department_id"]
                 dep_id_check = False
                 for item in department_data:
                     validate_json(item, schema_dep, "department")

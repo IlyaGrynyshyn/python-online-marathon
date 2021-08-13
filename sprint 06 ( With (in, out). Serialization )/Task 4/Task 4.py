@@ -36,9 +36,9 @@ class Group:
 
     @classmethod
     def create_group_from_file(cls, students_file):
-        with open(students_file) as group_file:
-            data = json.load(group_file)
-            return cls(group_file.name[:-5], data)
+        with open(students_file) as file:
+            data = json.load(file)
+            return cls(file.name[:-5], data)
 
     def __str__(self):
         list_of_stud = []
