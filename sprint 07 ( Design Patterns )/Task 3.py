@@ -12,8 +12,8 @@ class Truck:
     def __init__(self):
         self.name = "Truck"
 
-    def SixWheeler(self):
-        return 'SixWheeler'
+    def EightWheeler(self):
+        return 'EightWheeler'
 
 
 class Car:
@@ -33,11 +33,23 @@ class Adapter:
 
     def __init__(self, obj, **adapted_methods):
         """We set the adapted methods in the object's dict"""
+        self.obj = obj
+        self.__dict__.update(adapted_methods)
 
     def __getattr__(self, attr):
         """All non-adapted calls are passed to the object"""
+        return self.obj.name
 
     def original_dict(self):
-        return self.__dict__
+        print(self.__dict__)
 
 
+objects = []
+motorCycle = MotorCycle()
+objects.append(Adapter(motorCycle, wheels = motorCycle.TwoWheeler))
+truck = Truck()
+objects.append(Adapter(truck, wheels = truck.EightWheeler))
+car = Car()
+objects.append(Adapter(car, wheels = car.FourWheeler))
+for obj in objects:
+    print("A {0} is a {1} vehicle".format(obj.name, obj.wheels()))
