@@ -9,11 +9,18 @@ class MotorCycle:
 
 
 class Truck:
-    pass
+    def __init__(self):
+        self.name = "Truck"
+
+    def SixWheeler(self):
+        return 'SixWheeler'
 
 
 class Car:
-    pass
+    def __init__(self):
+        self.name = "Car"
+    def FourWheeler(self):
+        return 'FourWheeler'
 
 
 class Adapter:
@@ -31,6 +38,6 @@ class Adapter:
         """All non-adapted calls are passed to the object"""
 
     def original_dict(self):
-        """Print original object dict"""
+        return self.__dict__
 
 
