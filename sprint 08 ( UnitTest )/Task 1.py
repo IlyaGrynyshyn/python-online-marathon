@@ -10,52 +10,46 @@ class Product:
 
 class Cart:
 
-    def __init__(self):
-        self.cart = []
-        self.total_price = 0
-        self.product_count = 0
-        self.discount = 0
+    def __init__(self, product):
+        self.product = product
 
-    def add_product(self, product):
-        try:
-            if type(product.name) is str:
-                self.cart.append(product)
-                self.total_price += product.price
-                self.product_count += product.count
-        except:
-            raise ValueError
+    def get_total_price(self):
+        dic = {}
+        for i in range(len(self.product)):
+            dic[self.product[i].price] = self.product[i].count
 
-    def calculate_discount(self):
-        if 5 <= self.product_count < 7:
-            self.discount = 5
-        elif 7 <= self.product_count < 10:
-            self.discount = 10
-        elif 10 <= self.product_count < 20:
-            self.discount = 20
-        elif self.product_count == 20:
-            self.discount = 30
-        elif self.product_count > 20:
-            self.discount = 50
-        return self.total_price - ((self.total_price / 100) * self.discount)
+        lst = []
+
+        for key, value in dic.items():
+            item = key * value
+
+            if 0 <= value < 5:
+                lst.append(item)
+            elif 5 <= value < 7:
+                lst.append(item - ((item / 100) * 5))
+            elif 7 <= value < 10:
+                lst.append(item - ((item / 100) * 10))
+            elif 10 <= value < 20:
+                lst.append(item - ((item / 100) * 20))
+            elif value == 20:
+                lst.append(item - ((item / 100) * 30))
+            elif value > 20:
+                lst.append(item - ((item / 100) * 50))
+        return sum(lst)
 
 
 class CartTest(unittest.TestCase):
-    cart = Cart()
-    product1 = Product('Laptop', 20000, 10)
-    product2 = Product('Smartphone', 10000, 30)
-    product3 = Product('Monitor', 5000, 6)
-    cart.add_product(product1)
-    cart.add_product(product2)
-    cart.add_product(product3)
 
-    def test_product_count(self):
-        self.assertEqual(self.cart.product_count, 46)
+    def setUp(self):
+        self.product1 = Product('p1', 10, 4)
+        self.product2 = Product('p2', 100, 5)
+        self.product3 = Product('p3', 200, 6)
+        self.product4 = Product('p4', 300, 7)
+        self.product5 = Product('p5', 400, 9)
+        self.product6 = Product('p6', 500, 10)
+        self.product7 = Product('p7', 1000, 20)
 
-    def test_product_total_price(self):
-        self.assertEqual(self.cart.total_price, 35000)
-
-    def test_add_product_values(self):
-        self.assertRaises(ValueError, self.cart.add_product, 12314)
-
-    def test_calculate_discount(self):
-        self.assertEqual(self.cart.calculate_discount(), 17500)
+    def test_cart(self):
+        self.assertEqual(Cart((self.product1, self.product2, self.product3,
+                               self.product4, self.product5, self.product6, self.product7)).get_total_price(),
+                         24785.0)
