@@ -2,5 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/simplehttprequesthandler-Falex030" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/sprint 09 ( Networking( REST, SOAP, protocols, HTTP methods, status codes) )/simplehttprequesthandler-Falex030" vcs="Git" />
   </component>
 </project>
