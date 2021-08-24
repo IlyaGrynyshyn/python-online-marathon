@@ -6,3 +6,4 @@ def check_odd_even(number):
             return ("Entered number is odd")
     except:
        return ("You entered not a number.")
+
