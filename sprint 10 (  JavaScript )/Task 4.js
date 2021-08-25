@@ -9,9 +9,11 @@ function factorial(n) {
 
 
 function processArray(arr, factorial) {
-    return arr.map(function(x){
-        return factorial(x)
-    });
+    const fac_arr = []
+    for (let i =0; i<arr.length; i++){
+        fac_arr.push(factorial(arr[i]));
+    }
+    return fac_arr
 }
 
 console.log(processArray([1,2,4,5,6],factorial))
